@@ -18,7 +18,7 @@ const getPublickey = privateKey => {
   }
 };
 
-const getAccountIf = async publicKey => {
+const getAccount = async publicKey => {
   try {
     let pub = new PublicKey(publicKey);
     let info = await connection.getAccountInfo(pub);
@@ -60,10 +60,17 @@ const transfer = async (privateKey, to, amount) => {
 // console.log(pub);
 // console.log(bs58.decode('7Kg12WyEMymKFotMCdsWeXnC8hej6Bc8cFZwu4RB15BW'));
 
-getBalance('7Kg12WyEMymKFotMCdsWeXnC8hej6Bc8cFZwu4RB15BW').then(e => console.log(e));
+// getBalance('7Kg12WyEMymKFotMCdsWeXnC8hej6Bc8cFZwu4RB15BW').then(e => console.log(e));
 
 // transfer(
 //   '5mMrcq7KUqHrhnoCGKVnAB3khjkjoDM48LKJK7dKJdEYZy33dzk6yHi9pf6b2M7EUFRvqR63eABdNofMG2Xnae5o',
 //   '7Kg12WyEMymKFotMCdsWeXnC8hej6Bc8cFZwu4RB15BW',
 //   2 * 1e9
 // ).then(e => console.log(e));
+module.exports = {
+  createAccount: createAccount,
+  getPublickey: getPublickey,
+  getAccount: getAccount,
+  getBalance: getBalance,
+  transfer: transfer
+};
